@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(#d4c609 0%, #0fc5aa 100%);
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ebdd0d;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ebdd0d(0, 0.1, 0.1, 0.15);
+        }
+        h2 {
+            text-align: center;
+        }
+        label, input, button {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+        }
+        button {
+            padding: 10px;
+            background-color: #fff;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #ebdd0d;
+        }
+        .result {
+            margin-top: 20px;
+        }
+        .team-mem{
+    margin: 8px;
+        }
+        img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 10px;
+}
+    </style>
+    <div class="wrapper">
+        <h2>DEVELOPER</h2>
+        <hr>
+        <div class="DEVELOPER">
+            <div class="team-mem">
+                <img src="team1.jpg">
+                <h4>SHAIK SHAHEID</h4>
+                <P>WEB DESIGNER</P>
+                <P>GMAIL : shaikshaheid4@gmail.com</P>
+            </div>
+        </div>
+    </div>       
+</head>
+<body>
+    <div class="container">
+        <h2>Attendance Calculator</h2>
+        <label for="totalClasses">Total Classes Held:</label>
+        <input type="number" id="totalClasses" min="0" required>
+        
+        <label for="attendedClasses">Classes Attended:</label>
+        <input type="number" id="attendedClasses" min="0" required>
+        
+        <button onclick="calculateAttendance()">Calculate</button>
+        
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function calculateAttendance() {
+            let totalClasses = parseInt(document.getElementById('totalClasses').value);
+            let attendedClasses = parseInt(document.getElementById('attendedClasses').value);
+            
+            if (isNaN(totalClasses) || isNaN(attendedClasses) || totalClasses <= 0 || attendedClasses < 0) {
+                alert("Please enter valid numbers.");
+                return;
+            }
+            
+            let attendancePercentage = (attendedClasses / totalClasses) * 100;
+            let minClassesNeeded = Math.ceil(0.75 * totalClasses);
+            let classesToBunk = Math.floor(attendedClasses / 0.75) - totalClasses;
+            let classesToAttend = minClassesNeeded - attendedClasses;
+
+            let resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `<p>Attendance Percentage: ${attendancePercentage.toFixed(2)}%</p>`;
+            
+            if (attendancePercentage >= 75) {
+                resultDiv.innerHTML += `<p>You can bunk ${classesToBunk} more classes and still maintain 75% attendance.</p>`;
+            } else {
+                resultDiv.innerHTML += `<p>You need to attend ${classesToAttend} more classes to reach 75% attendance.</p>`;
+            }
+        }
+    </script>
+</body>
+</html>
