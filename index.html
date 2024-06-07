@@ -100,7 +100,7 @@
             resultDiv.innerHTML = `<p>Attendance Percentage: ${attendancePercentage.toFixed(2)}%</p>`;
             
             if (attendancePercentage >= 75) {
-                resultDiv.innerHTML += `<p>You can bunk ${classesToBunk} more classes and still maintain 75% attendance.</p>`;
+                resultDiv.innerHTML += `<p>You can skip ${classesToBunk} more classes and still maintain 75% attendance.</p>`;
             } else {
                 resultDiv.innerHTML += `<p>You need to attend ${classesToAttend} more classes to reach 75% attendance.</p>`;
             }
