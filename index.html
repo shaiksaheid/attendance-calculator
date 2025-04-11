@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Attendance Calculator</title>
+    
+    <!-- Bootstrap CDN Link -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -20,65 +24,53 @@
             padding: 20px;
             border: 1px solid #ebdd0d;
             border-radius: 10px;
-            box-shadow: 0 0 10px #ebdd0d(0, 0.1, 0.1, 0.15);
+            box-shadow: 0 0 10px rgba(235, 221, 13, 0.1);
         }
         h2 {
             text-align: center;
         }
-        label, input, button {
-            display: block;
-            width: 100%;
-            margin: 10px 0;
+        .team-mem {
+            margin: 8px;
         }
-        button {
-            padding: 10px;
-            background-color: #fff;
-            color: #000;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+        img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 10px;
         }
-        button:hover {
-            background-color: #ebdd0d;
-        }
-        .result {
-            margin-top: 20px;
-        }
-        .team-mem{
-    margin: 8px;
-        }
-        img{
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin: 10px;
-}
     </style>
+    
     <div class="wrapper">
-        <h2>DEVELOPER</h2>
+        <h2 class="text-center">DEVELOPER</h2>
         <hr>
-        <div class="DEVELOPER">
+        <div class="DEVELOPER text-center">
             <div class="team-mem">
                 <img src="team1.jpg">
                 <h4>SHAIK SHAHEID</h4>
-                <P>WEB DESIGNER</P>
-                <P>GMAIL : shaikshaheid4@gmail.com</P>
+                <p>WEB DESIGNER</p>
+                <p>GMAIL: shaikshaheid4@gmail.com</p>
             </div>
         </div>
-    </div>       
+    </div>
 </head>
 <body>
     <div class="container">
         <h2>Attendance Calculator</h2>
-        <label for="totalClasses">Total Classes Held:</label>
-        <input type="number" id="totalClasses" min="0" required>
+        <form>
+            <div class="form-group">
+                <label for="totalClasses">Total Classes Held:</label>
+                <input type="number" id="totalClasses" class="form-control" min="0" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="attendedClasses">Classes Attended:</label>
+                <input type="number" id="attendedClasses" class="form-control" min="0" required>
+            </div>
+            
+            <button type="button" class="btn btn-primary btn-block" onclick="calculateAttendance()">Calculate</button>
+        </form>
         
-        <label for="attendedClasses">Classes Attended:</label>
-        <input type="number" id="attendedClasses" min="0" required>
-        
-        <button onclick="calculateAttendance()">Calculate</button>
-        
-        <div class="result" id="result"></div>
+        <div class="result mt-3" id="result"></div>
     </div>
 
     <script>
@@ -106,5 +98,10 @@
             }
         }
     </script>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
